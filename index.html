@@ -339,4 +339,101 @@
         <option value="100-150 photos for R450">100-150 photos – R450</option>
       </select>
 
-      <label for="date">Preferred Date
+      <label for="date">Preferred Date:</label>
+      <input type="date" id="date" name="date" required />
+
+      <label for="message">Additional Info:</label>
+      <textarea id="message" name="message" rows="4" placeholder="Location, occasion, time etc."></textarea>
+
+      <button type="submit" class="whatsapp-button" aria-label="Send booking via WhatsApp">
+        <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp Icon" /> Send via WhatsApp
+      </button>
+    </form>
+
+    <div class="gallery-title">Our Work</div>
+    <div class="gallery" aria-label="Photography gallery">
+      <img src="1.jpg" alt="Gallery Image 1" class="zoomable" tabindex="0" />
+      <img src="2.jpg" alt="Gallery Image 2" class="zoomable" tabindex="0" />
+      <img src="3.jpg" alt="Gallery Image 3" class="zoomable" tabindex="0" />
+      <img src="4.jpg" alt="Gallery Image 4" class="zoomable" tabindex="0" />
+      <img src="5.jpg" alt="Gallery Image 5" class="zoomable" tabindex="0" />
+      <img src="6.jpg" alt="Gallery Image 6" class="zoomable" tabindex="0" />
+      <img src="7.jpg" alt="Gallery Image 7" class="zoomable" tabindex="0" />
+      <img src="8.jpg" alt="Gallery Image 8" class="zoomable" tabindex="0" />
+      <img src="9.jpg" alt="Gallery Image 9" class="zoomable" tabindex="0" />
+    </div>
+
+    <a href="https://wa.me/27678832534?text=Hi%20MVZ%20Photography%2C%20I'm%20interested%20in%20your%20services!" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp Icon" /> Chat on WhatsApp
+    </a>
+
+    <div class="footer">
+      Capturing Moments, Creating Memories.
+    </div>
+  </div>
+
+  <!-- Modal for zoomed images -->
+  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalImageAlt">
+    <span class="modal-close" id="modalClose" role="button" aria-label="Close image zoom">&times;</span>
+    <img class="modal-content" id="modalImage" alt="" />
+  </div>
+
+  <script>
+    // Zoom functionality with keyboard accessibility
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalClose = document.getElementById("modalClose");
+    const zoomableImages = document.querySelectorAll(".zoomable");
+
+    zoomableImages.forEach(img => {
+      img.addEventListener("click", () => openModal(img));
+      img.addEventListener("keypress", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal(img);
+        }
+      });
+    });
+
+    function openModal(img) {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      modalClose.focus();
+    }
+
+    modalClose.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", e => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      modal.style.display = "none";
+      modalImg.src = "";
+      modalImg.alt = "";
+    }
+
+    // Close modal on ESC key
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && modal.style.display === "flex") {
+        closeModal();
+      }
+    });
+
+    // WhatsApp booking form submission
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value.trim();
+      const pack = document.getElementById("package").value;
+      const date = document.getElementById("date").value;
+      const message = document.getElementById("message").value.trim();
+
+      const text = `Hi MVZ Photography,%0A%0AI'd like to make a booking.%0A%0A👤 Name: ${name}%0A📸 Package: ${pack}%0A📅 Date: ${date}%0A📝 Notes: ${message}`;
+      const url = `https://wa.me/27678832534?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
