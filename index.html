@@ -37,11 +37,6 @@
       margin: 0;
     }
 
-    .subtitle {
-      font-size: 1.2em;
-      margin-bottom: 5px;
-    }
-
     .contact {
       font-size: 1.1em;
       margin-bottom: 30px;
@@ -104,6 +99,8 @@
       text-align: center;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       transition: background-color 0.3s ease, transform 0.2s ease;
+      border: none;
+      cursor: pointer;
     }
 
     .whatsapp-button:hover {
@@ -124,6 +121,16 @@
       text-align: center;
       color: #444;
       margin-top: 30px;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
     }
 
     @media (max-width: 600px) {
@@ -157,6 +164,31 @@
       <p>📍 Located in Vaalpark & Sasolburg</p>
     </div>
 
+    <div class="gallery-title">Booking Form</div>
+    <form id="booking-form" onsubmit="sendToWhatsApp(); return false;">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="package">Select Package:</label>
+      <select id="package" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="15-30 photos for R150">15-30 photos – R150</option>
+        <option value="30-50 photos for R250">30-50 photos – R250</option>
+        <option value="50-100 photos for R350">50-100 photos – R350</option>
+        <option value="100-150 photos for R450">100-150 photos – R450</option>
+      </select>
+
+      <label for="date">Preferred Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="message">Additional Info:</label>
+      <textarea id="message" rows="4" placeholder="Location, occasion, time etc."></textarea>
+
+      <button type="submit" class="whatsapp-button">
+        <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp Icon"/> Send via WhatsApp
+      </button>
+    </form>
+
     <div class="gallery-title">Our Work</div>
     <div class="gallery">
       <img src="1.jpg" alt="Gallery Image 1">
@@ -178,6 +210,19 @@
       Capturing Moments, Creating Memories.
     </div>
   </div>
+
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value;
+      const pack = document.getElementById("package").value;
+      const date = document.getElementById("date").value;
+      const message = document.getElementById("message").value;
+
+      const text = `Hi MVZ Photography,%0A%0AI'd like to make a booking.%0A%0A👤 Name: ${name}%0A📸 Package: ${pack}%0A📅 Date: ${date}%0A📝 Notes: ${message}`;
+      const url = `https://wa.me/27678832534?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+  </script>
 
 </body>
 </html>
