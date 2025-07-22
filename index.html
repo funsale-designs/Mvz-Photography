@@ -1,1 +1,183 @@
-i
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MVZ Photography</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fefefe;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #111;
+      border-radius: 15px;
+      background: #fff;
+      margin-top: 40px;
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .header img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family: cursive;
+      margin: 0;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+    .contact {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+
+    .pricing {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .pricing div {
+      margin: 10px 0;
+    }
+
+    .location {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .gallery-title {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-family: cursive;
+      font-size: 1.8em;
+      color: #111;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    .whatsapp-button {
+      display: block;
+      width: fit-content;
+      margin: 30px auto 0;
+      padding: 12px 25px;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1.1em;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #1DA851;
+      transform: translateY(-2px);
+    }
+
+    .whatsapp-button img {
+      vertical-align: middle;
+      margin-right: 8px;
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.3em;
+      text-align: center;
+      color: #444;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <img src="https://img.icons8.com/ios/100/camera--v1.png" alt="Camera Icon" />
+      <h1>MVZ PHOTOGRAPHY</h1>
+      <div class="contact">📞 067 883 2534</div>
+    </div>
+
+    <div class="pricing">
+      <div><strong>15-30 photos:</strong> R150</div>
+      <div><strong>30-50 photos:</strong> R250</div>
+      <div><strong>50-100 photos:</strong> R350</div>
+      <div><strong>100-150 photos:</strong> R450</div>
+    </div>
+
+    <div class="location">
+      <p>📍 Located in Vaalpark & Sasolburg</p>
+    </div>
+
+    <div class="gallery-title">Our Work</div>
+    <div class="gallery">
+      <img src="1.jpg" alt="Gallery Image 1">
+      <img src="2.jpg" alt="Gallery Image 2">
+      <img src="3.jpg" alt="Gallery Image 3">
+      <img src="4.jpg" alt="Gallery Image 4">
+      <img src="5.jpg" alt="Gallery Image 5">
+      <img src="6.jpg" alt="Gallery Image 6">
+      <img src="7.jpg" alt="Gallery Image 7">
+      <img src="8.jpg" alt="Gallery Image 8">
+      <img src="9.jpg" alt="Gallery Image 9">
+    </div>
+
+    <a href="https://wa.me/27678832534?text=Hi%20MVZ%20Photography%2C%20I'm%20interested%20in%20your%20services!" class="whatsapp-button" target="_blank">
+      <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp Icon"/> Chat on WhatsApp
+    </a>
+
+    <div class="footer">
+      Capturing Moments, Creating Memories.
+    </div>
+  </div>
+
+</body>
+</html>
