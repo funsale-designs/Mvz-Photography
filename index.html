@@ -79,6 +79,7 @@
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       transition: transform 0.2s ease-in-out;
+      cursor: pointer;
     }
 
     .gallery img:hover {
@@ -131,6 +132,51 @@
       border-radius: 8px;
       margin-bottom: 10px;
       box-sizing: border-box;
+    }
+
+    /* Modal styles for zoom */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #000;
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {transform: scale(0.7);}
+      to {transform: scale(1);}
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1100;
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: #bbb;
     }
 
     @media (max-width: 600px) {
@@ -191,15 +237,15 @@
 
     <div class="gallery-title">Our Work</div>
     <div class="gallery">
-      <img src="1.jpg" alt="Gallery Image 1">
-      <img src="2.jpg" alt="Gallery Image 2">
-      <img src="3.jpg" alt="Gallery Image 3">
-      <img src="4.jpg" alt="Gallery Image 4">
-      <img src="5.jpg" alt="Gallery Image 5">
-      <img src="6.jpg" alt="Gallery Image 6">
-      <img src="7.jpg" alt="Gallery Image 7">
-      <img src="8.jpg" alt="Gallery Image 8">
-      <img src="9.jpg" alt="Gallery Image 9">
+      <img src="1.jpg" alt="Gallery Image 1" class="zoomable">
+      <img src="2.jpg" alt="Gallery Image 2" class="zoomable">
+      <img src="3.jpg" alt="Gallery Image 3" class="zoomable">
+      <img src="4.jpg" alt="Gallery Image 4" class="zoomable">
+      <img src="5.jpg" alt="Gallery Image 5" class="zoomable">
+      <img src="6.jpg" alt="Gallery Image 6" class="zoomable">
+      <img src="7.jpg" alt="Gallery Image 7" class="zoomable">
+      <img src="8.jpg" alt="Gallery Image 8" class="zoomable">
+      <img src="9.jpg" alt="Gallery Image 9" class="zoomable">
     </div>
 
     <a href="https://wa.me/27678832534?text=Hi%20MVZ%20Photography%2C%20I'm%20interested%20in%20your%20services!" class="whatsapp-button" target="_blank">
@@ -211,7 +257,43 @@
     </div>
   </div>
 
+  <!-- Modal for zoomed images -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img class="modal-content" id="modalImage" alt="Zoomed image">
+  </div>
+
   <script>
+    // Zoom functionality
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalClose = document.getElementById("modalClose");
+    const zoomableImages = document.querySelectorAll(".zoomable");
+
+    zoomableImages.forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+      });
+    });
+
+    modalClose.addEventListener("click", () => {
+      modal.style.display = "none";
+      modalImg.src = "";
+      modalImg.alt = "";
+    });
+
+    // Close modal if clicking outside the image
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        modalImg.src = "";
+        modalImg.alt = "";
+      }
+    });
+
+    // WhatsApp booking form submission
     function sendToWhatsApp() {
       const name = document.getElementById("name").value;
       const pack = document.getElementById("package").value;
