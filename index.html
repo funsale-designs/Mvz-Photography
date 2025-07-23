@@ -4,206 +4,148 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MVZ Photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --rainbow: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: white;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
       color: #333;
-      line-height: 1.6;
+      scroll-behavior: smooth;
     }
-
     header {
-      background: var(--rainbow);
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      padding: 1rem;
       color: white;
       text-align: center;
-      padding: 2rem 1rem;
     }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #f9f9f9;
+      padding: 1rem;
+      gap: 1.5rem;
+      border-bottom: 2px solid #eee;
     }
-
-    header p {
-      font-size: 1.2rem;
+    nav a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 600;
     }
-
+    nav a:hover {
+      color: #ff4081;
+    }
     section {
-      padding: 3rem 1rem;
+      padding: 3rem 1.5rem;
       max-width: 1000px;
       margin: auto;
     }
-
-    .story {
-      background-color: #f9f9f9;
-      border-left: 6px solid violet;
-      padding: 1rem 1.5rem;
-      margin-bottom: 2rem;
+    h2 {
+      text-align: center;
+      color: #222;
     }
-
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
     }
-
     .gallery img {
       width: 100%;
-      border: 4px solid transparent;
-      border-image: var(--rainbow) 1;
-      border-image-slice: 1;
+      border-radius: 10px;
+      transition: transform 0.4s ease;
       cursor: zoom-in;
-      transition: transform 0.3s ease;
     }
-
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
-
-    .lightbox {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      display: none;
-      z-index: 1000;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-    }
-
-    .contact-form {
-      background-color: #f1f1f1;
+    .price-list, .story {
+      background-color: #fefefe;
       padding: 2rem;
-      border-radius: 8px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-
-    .contact-form label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .contact-form button {
-      background: var(--rainbow);
+    .booking-btn {
+      display: inline-block;
+      background-color: #25D366;
       color: white;
-      border: none;
-      padding: 0.8rem 2rem;
-      margin-top: 1rem;
-      cursor: pointer;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
       font-weight: bold;
-      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 2rem;
+      transition: background 0.3s;
     }
-
+    .booking-btn:hover {
+      background-color: #1da851;
+    }
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      background: var(--rainbow);
+      padding: 1rem;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
       color: white;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>MVZ Photography</h1>
-    <p>Capturing beauty in the ordinary — through young eyes</p>
-  </header>
+<header>
+  <h1>MVZ Photography</h1>
+  <p>Capturing beauty in every moment</p>
+</header>
 
-  <section>
-    <h2>My Story</h2>
-    <div class="story">
-      <p>
-        I started my photography journey as a teenager with nothing but a borrowed camera and a dream. While others looked for perfection in sunsets or portraits, I found beauty in old buildings, rusty bikes, cracked pavements, and people just being themselves. 
-        <br><br>
-        Photography taught me to *see*, not just look. To feel the colors in gray places and capture light in shadow. Every photo I take is a reminder that even the ordinary is extraordinary when you slow down and truly see it.
-      </p>
-    </div>
+<nav>
+  <a href="#story">My Story</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#prices">Prices</a>
+  <a href="#book">Book Now</a>
+</nav>
 
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="1.jpg" alt="Gallery Image 1">
-      <img src="2.jpg" alt="Gallery Image 2">
-      <img src="3.jpg" alt="Gallery Image 3">
-      <img src="4.jpg" alt="Gallery Image 4">
-      <img src="5.jpg" alt="Gallery Image 5">
-      <img src="6.jpg" alt="Gallery Image 6">
-      <img src="7.jpg" alt="Gallery Image 7">
-      <img src="8.jpg" alt="Gallery Image 8">
-      <img src="9.jpg" alt="Gallery Image 9">
-      <img src="10.jpg" alt="Gallery Image 10">
-    </div>
-  </section>
+<section id="story" class="story">
+  <h2>My Inspiring Story</h2>
+  <p>
+    As a young photographer, I began my journey not with fancy equipment, but with a deep curiosity for the world around me. 
+    While others saw the ordinary, I saw magic in the everyday — the light dancing through leaves, a quiet smile, or the reflection in a puddle. 
+    Photography taught me that beauty isn't reserved for grand moments — it's all around us, waiting to be noticed. 
+    Every photo I take is a celebration of that beauty, seen through the eyes of someone who believes in finding art in the simple things.
+  </p>
+</section>
 
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="Expanded View">
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="1.jpg" alt="Photo 1" />
+    <img src="2.jpg" alt="Photo 2" />
+    <img src="3.jpg" alt="Photo 3" />
+    <img src="4.jpg" alt="Photo 4" />
+    <img src="5.jpg" alt="Photo 5" />
+    <img src="6.jpg" alt="Photo 6" />
+    <img src="7.jpg" alt="Photo 7" />
+    <img src="8.jpg" alt="Photo 8" />
+    <img src="9.jpg" alt="Photo 9" />
+    <img src="10.jpg" alt="Photo 10" />
   </div>
+</section>
 
-  <section>
-    <h2>Book a Shoot / Contact Me</h2>
-    <form class="contact-form">
-      <label for="name">Name</label>
-      <input type="text" id="name" required>
+<section id="prices" class="price-list">
+  <h2>Price List</h2>
+  <ul>
+    <li><strong>Mini Shoot (30 mins):</strong> R300</li>
+    <li><strong>Full Session (1 hour):</strong> R600</li>
+    <li><strong>Event Photography (2+ hours):</strong> From R1000</li>
+    <li><strong>Custom Package:</strong> Contact for a quote</li>
+  </ul>
+</section>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" required>
+<section id="book" style="text-align:center;">
+  <h2>Book Your Shoot</h2>
+  <p>Contact me directly via WhatsApp to make your booking.</p>
+  <a href="https://wa.me/27728816873" class="booking-btn" target="_blank">Book on WhatsApp</a>
+</section>
 
-      <label for="message">Message</label>
-      <textarea id="message" rows="5" required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <footer>
-    &copy; 2025 MVZ Photography | Made with passion 🌈
-  </footer>
-
-  <script>
-    const lightbox = document.getElementById('lightbox');
-    const galleryImages = document.querySelectorAll('.gallery img');
-    const lightboxImg = lightbox.querySelector('img');
-
-    galleryImages.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-      });
-    });
-
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
-  </script>
+<footer>
+  &copy; 2025 MVZ Photography | All Rights Reserved
+</footer>
 
 </body>
 </html>
