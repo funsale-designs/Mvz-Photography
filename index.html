@@ -2,438 +2,157 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MVZ Photography</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
   <style>
-    /* Reset and base */
-    * {
-      box-sizing: border-box;
-    }
-
     body {
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      background-color: #fff;
-      color: #222;
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 30px 25px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-      border: 2px solid #eee;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .header img {
-      width: 90px;
-      margin-bottom: 15px;
-      transition: transform 0.3s ease;
-    }
-
-    .header img:hover {
-      transform: rotate(10deg) scale(1.1);
-    }
-
-    /* Rainbow gradient text style */
-    .rainbow-text {
-      background: linear-gradient(90deg, 
-        red, orange, yellow, green, blue, indigo, violet);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    h1 {
-      font-weight: 700;
-      font-size: 2.8rem;
-      margin: 0;
-    }
-
-    .contact {
-      font-weight: 500;
-      font-size: 1.2rem;
-      margin-top: 8px;
-      color: #555;
-    }
-
-    .pricing {
-      margin-bottom: 40px;
-      font-weight: 600;
-      font-size: 1.2rem;
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
-      padding: 20px 0;
-      color: #444;
-    }
-
-    .pricing div {
-      margin: 12px 0;
-      padding-left: 10px;
-      border-left: 4px solid transparent;
-      transition: all 0.3s ease;
-      cursor: default;
-      user-select: none;
-    }
-
-    .pricing div:hover {
-      border-left: 4px solid;
-      border-image-slice: 1;
-      border-image-source: linear-gradient(90deg, 
-        red, orange, yellow, green, blue, indigo, violet);
-      background: #fafafa;
-    }
-
-    .location {
-      text-align: center;
-      font-size: 1.1rem;
-      margin-bottom: 45px;
-      color: #666;
-      font-weight: 500;
-    }
-
-    .gallery-title {
-      font-size: 2.2rem;
-      text-align: center;
-      margin-bottom: 25px;
-      font-weight: 700;
-      color: #222;
-    }
-
-    /* Booking form */
-    form {
-      background: #f9f9f9;
-      padding: 25px 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.05);
-      margin-bottom: 50px;
-      color: #222;
-    }
-
-    form label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      font-size: 1rem;
+      padding: 0;
+      background: white;
       color: #333;
     }
 
-    form input,
-    form select,
-    form textarea {
-      width: 100%;
-      padding: 12px 15px;
-      margin-bottom: 20px;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      background: #fff;
-      color: #222;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-    }
-
-    form input:focus,
-    form select:focus,
-    form textarea:focus {
-      outline: none;
-      border-color: #ff5e62;
-      box-shadow: 0 0 8px rgba(255, 94, 98, 0.4);
-      background: #fff;
-    }
-
-    form textarea {
-      resize: vertical;
-      min-height: 80px;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    /* Buttons with rainbow gradient background */
-    .whatsapp-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 32px;
-      background: linear-gradient(90deg, 
-        red, orange, yellow, green, blue, indigo, violet);
-      border: none;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.15rem;
+    header {
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
       color: white;
-      cursor: pointer;
-      box-shadow: 0 6px 15px rgba(255, 94, 98, 0.6);
-      transition: filter 0.3s ease, transform 0.2s ease;
-      user-select: none;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: #fff;
+      border-bottom: 2px solid #eee;
+      padding: 1rem 0;
+    }
+
+    nav a {
       text-decoration: none;
-      margin: 0 auto;
+      color: #333;
+      font-weight: bold;
     }
 
-    .whatsapp-button img {
-      width: 26px;
-      height: 26px;
-      margin-right: 10px;
-      filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
+    section {
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    .whatsapp-button:hover,
-    .whatsapp-button:focus {
-      filter: brightness(1.15);
-      transform: translateY(-3px);
-      outline: none;
+    h2 {
+      margin-top: 0;
+      border-left: 5px solid;
+      padding-left: 1rem;
     }
 
-    /* Gallery */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 18px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
     }
 
     .gallery img {
       width: 100%;
-      border-radius: 12px;
+      height: auto;
+      border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      object-fit: cover;
-      aspect-ratio: 4 / 3;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12));
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(255, 94, 98, 0.6);
-      filter: drop-shadow(0 4px 10px rgba(255, 94, 98, 0.7));
+    form {
+      display: grid;
+      gap: 1rem;
     }
 
-    /* Modal styles for zoom */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255,255,255,0.95);
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(8px);
-      cursor: zoom-out;
+    input, textarea, button {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
 
-    .modal-content {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 12px;
-      box-shadow: 0 0 25px rgba(255, 94, 98, 0.6);
-      animation: zoomIn 0.3s ease;
-      object-fit: contain;
-      cursor: default;
-      background: white;
-    }
-
-    @keyframes zoomIn {
-      from {transform: scale(0.7);}
-      to {transform: scale(1);}
-    }
-
-    .modal-close {
-      position: fixed;
-      top: 25px;
-      right: 35px;
-      color: #ff5e62;
-      font-size: 48px;
-      font-weight: 700;
+    button {
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      color: white;
+      font-weight: bold;
+      border: none;
       cursor: pointer;
-      user-select: none;
-      z-index: 1100;
-      transition: color 0.3s ease;
-      text-shadow: 0 0 10px #ff5e62cc;
-      background: white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      line-height: 48px;
-      text-align: center;
     }
 
-    .modal-close:hover {
-      color: #ff3b40;
-    }
-
-    /* Footer */
-    .footer {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.3rem;
+    footer {
+      background: #f5f5f5;
+      padding: 2rem;
       text-align: center;
-      color: #555;
-      margin-top: 30px;
-      font-weight: 300;
-      letter-spacing: 0.05em;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 600px) {
-      .container {
-        margin: 20px 10px;
-        padding: 20px 15px;
-      }
-      .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 14px;
-      }
-      .whatsapp-button {
-        width: 100%;
-        justify-content: center;
+      nav {
+        flex-direction: column;
+        gap: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="header">
-      <img src="https://img.icons8.com/ios/100/camera--v1.png" alt="Camera Icon" />
-      <h1 class="rainbow-text">MVZ PHOTOGRAPHY</h1>
-      <div class="contact">📞 067 883 2534</div>
+  <header>
+    <h1>MVZ Photography</h1>
+    <p>Capturing beauty in the ordinary</p>
+  </header>
+
+  <nav>
+    <a href="#story">My Story</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#book">Book a Session</a>
+  </nav>
+
+  <section id="story">
+    <h2 style="border-color: red;">My Inspiring Journey</h2>
+    <p>
+      Growing up with a camera in my hand, I discovered that photography wasn’t just about fancy equipment or exotic places — it was about noticing the magic in everyday life. A drop of rain on a leaf, a smile shared between strangers, the golden light that spills into a room at dusk — these are the moments that tell real stories.
+    </p>
+    <p>
+      As a young photographer, I often felt overlooked, but I used that quiet to observe. I learned that even in the most ordinary corners of life, there is extraordinary beauty. My goal is to capture that — to show the world that magic isn’t far away, it’s right in front of us if we take a moment to see it.
+    </p>
+    <p>
+      MVZ Photography is built on that belief: that beauty is everywhere. All it takes is the right lens — and heart — to see it.
+    </p>
+  </section>
+
+  <section id="gallery">
+    <h2 style="border-color: blue;">Gallery</h2>
+    <div class="gallery">
+      <a href="images/1.jpg" data-lightbox="gallery"><img src="images/1.jpg" alt="Gallery image 1" /></a>
+      <a href="images/2.jpg" data-lightbox="gallery"><img src="images/2.jpg" alt="Gallery image 2" /></a>
+      <a href="images/3.jpg" data-lightbox="gallery"><img src="images/3.jpg" alt="Gallery image 3" /></a>
+      <a href="images/4.jpg" data-lightbox="gallery"><img src="images/4.jpg" alt="Gallery image 4" /></a>
+      <a href="images/5.jpg" data-lightbox="gallery"><img src="images/5.jpg" alt="Gallery image 5" /></a>
+      <a href="images/6.jpg" data-lightbox="gallery"><img src="images/6.jpg" alt="Gallery image 6" /></a>
+      <a href="images/7.jpg" data-lightbox="gallery"><img src="images/7.jpg" alt="Gallery image 7" /></a>
+      <a href="images/8.jpg" data-lightbox="gallery"><img src="images/8.jpg" alt="Gallery image 8" /></a>
+      <a href="images/9.jpg" data-lightbox="gallery"><img src="images/9.jpg" alt="Gallery image 9" /></a>
+      <a href="images/10.jpg" data-lightbox="gallery"><img src="images/10.jpg" alt="Gallery image 10" /></a>
     </div>
+  </section>
 
-    <div class="pricing" aria-label="Pricing options">
-      <div><strong>15-30 photos:</strong> R150</div>
-      <div><strong>30-50 photos:</strong> R250</div>
-      <div><strong>50-100 photos:</strong> R350</div>
-      <div><strong>100-150 photos:</strong> R450</div>
-    </div>
-
-    <div class="location" aria-label="Location info">
-      <p>📍 Located in Vaalpark &amp; Sasolburg</p>
-    </div>
-
-    <div class="gallery-title" id="booking-form-title">Booking Form</div>
-    <form id="booking-form" onsubmit="sendToWhatsApp(); return false;" aria-labelledby="booking-form-title">
-      <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" placeholder="Enter your full name" required autocomplete="name" />
-
-      <label for="package">Select Package:</label>
-      <select id="package" name="package" required>
-        <option value="" disabled selected>Select an option</option>
-        <option value="15-30 photos for R150">15-30 photos – R150</option>
-        <option value="30-50 photos for R250">30-50 photos – R250</option>
-        <option value="50-100 photos for R350">50-100 photos – R350</option>
-        <option value="100-150 photos for R450">100-150 photos – R450</option>
-      </select>
-
-      <label for="date">Preferred Date:</label>
-      <input type="date" id="date" name="date" required />
-
-      <label for="message">Additional Info:</label>
-      <textarea id="message" name="message" rows="4" placeholder="Location, occasion, time etc."></textarea>
-
-      <button type="submit" class="whatsapp-button" aria-label="Send booking via WhatsApp">
-        <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp Icon" /> Send via WhatsApp
-      </button>
+  <section id="book">
+    <h2 style="border-color: green;">Book a Session</h2>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="phone" placeholder="Phone Number" />
+      <textarea name="message" placeholder="Tell me what you're looking for..." rows="4"></textarea>
+      <button type="submit">Book Now</button>
     </form>
+  </section>
 
-    <div class="gallery-title">Our Work</div>
-    <div class="gallery" aria-label="Photography gallery">
-      <img src="1.jpg" alt="Gallery Image 1" class="zoomable" tabindex="0" />
-      <img src="2.jpg" alt="Gallery Image 2" class="zoomable" tabindex="0" />
-      <img src="3.jpg" alt="Gallery Image 3" class="zoomable" tabindex="0" />
-      <img src="4.jpg" alt="Gallery Image 4" class="zoomable" tabindex="0" />
-      <img src="5.jpg" alt="Gallery Image 5" class="zoomable" tabindex="0" />
-      <img src="6.jpg" alt="Gallery Image 6" class="zoomable" tabindex="0" />
-      <img src="7.jpg" alt="Gallery Image 7" class="zoomable" tabindex="0" />
-      <img src="8.jpg" alt="Gallery Image 8" class="zoomable" tabindex="0" />
-      <img src="9.jpg" alt="Gallery Image 9" class="zoomable" tabindex="0" />
-    </div>
+  <footer>
+    <p>&copy; 2025 MVZ Photography. All rights reserved.</p>
+  </footer>
 
-    <a href="https://wa.me/27678832534?text=Hi%20MVZ%20Photography%2C%20I'm%20interested%20in%20your%20services!" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-      <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp Icon" /> Chat on WhatsApp
-    </a>
-
-    <div class="footer">
-      Capturing Moments, Creating Memories.
-    </div>
-  </div>
-
-  <!-- Modal for zoomed images -->
-  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalImageAlt">
-    <span class="modal-close" id="modalClose" role="button" aria-label="Close image zoom">&times;</span>
-    <img class="modal-content" id="modalImage" alt="" />
-  </div>
-
-  <script>
-    // Zoom functionality with keyboard accessibility
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    const modalClose = document.getElementById("modalClose");
-    const zoomableImages = document.querySelectorAll(".zoomable");
-
-    zoomableImages.forEach(img => {
-      img.addEventListener("click", () => openModal(img));
-      img.addEventListener("keypress", e => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openModal(img);
-        }
-      });
-    });
-
-    function openModal(img) {
-      modal.style.display = "flex";
-      modalImg.src = img.src;
-      modalImg.alt = img.alt;
-      modalClose.focus();
-    }
-
-    modalClose.addEventListener("click", closeModal);
-
-    modal.addEventListener("click", e => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-
-    function closeModal() {
-      modal.style.display = "none";
-      modalImg.src = "";
-      modalImg.alt = "";
-    }
-
-    // Close modal on ESC key
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape" && modal.style.display === "flex") {
-        closeModal();
-      }
-    });
-
-    // WhatsApp booking form submission
-    function sendToWhatsApp() {
-      const name = document.getElementById("name").value.trim();
-      const pack = document.getElementById("package").value;
-      const date = document.getElementById("date").value;
-      const message = document.getElementById("message").value.trim();
-
-      const text = `Hi MVZ Photography,%0A%0AI'd like to make a booking.%0A%0A👤 Name: ${name}%0A📸 Package: ${pack}%0A📅 Date: ${date}%0A📝 Notes: ${message}`;
-      const url = `https://wa.me/27678832534?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox-plus-jquery.min.js"></script>
 </body>
 </html>
